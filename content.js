@@ -319,3 +319,101 @@ async function fillFormWithData(data) {
 
     console.log("Formulaire potentiellement rempli (avec sous-fonctions).");
 }
+
+
+/* ------------------------------------------------------------------
+   PARTIE : CLique Droit (context menu)
+   Utilise les fonctions qu'on a créées
+------------------------------------------------------------------ */
+
+/**
+ * Mémorise le dernier champ où on a fait clic droit.
+ */
+let lastRightClickedElement = null;
+
+document.addEventListener("contextmenu", (e) => {
+  if (
+    e.target instanceof HTMLInputElement ||
+    e.target instanceof HTMLTextAreaElement ||
+    e.target.isContentEditable
+  ) {
+    lastRightClickedElement = e.target;
+  } else {
+    lastRightClickedElement = null;
+  }
+});
+
+/**
+ * On écoute les messages "fillOneInput" / "fillAllInputs" depuis background.js
+ */
+browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (msg.action === "fillOneInput") {
+    if (lastRightClickedElement) {
+      fillOneFieldIntelligent(lastRightClickedElement);
+    }
+  } else if (msg.action === "fillAllInputs") {
+    fillAllFieldsIntelligent();
+  }
+});
+
+/**
+ * fillOneFieldIntelligent(elem)
+ * - Analyse l'input pour voir s'il correspond à "first name", "last name", "birthdate"...
+ * - Appelle la sous-fonction appropriée (fillFirstNameField, fillBirthdateField, etc.)
+ */
+async function fillOneFieldIntelligent(elem) {
+  // On récupère le 'name' (en minuscules) pour deviner le type de champ
+  const fieldName = (elem.name || "").toLowerCase();
+
+  if (fieldName.includes("first")) {
+    // Prénom
+    await fillFirstNameField("Alice"); 
+  } 
+  else if (fieldName.includes("last")) {
+    // Nom
+    await fillLastNameField("Smith");
+  }
+  else if (fieldName.includes("birth") || fieldName.includes("date")) {
+    // Date de naissance
+    await fillBirthdateField("12 March 1987");
+  }
+  else if (fieldName.includes("gender")) {
+    // Genre
+    fillGenderField("Female");
+  }
+  else {
+    // Sinon, on considère que c'est un champ "full name"
+    await fillFullNameField("Smith Alice");
+  }
+}
+
+/**
+ * fillAllFieldsIntelligent()
+ * - Parcourt tous les <input> / <textarea>, et selon le "name", 
+ *   appelle la sous-fonction appropriée ou y met des valeurs standard.
+ */
+async function fillAllFieldsIntelligent() {
+  // On récupère tous les champs de type text, email, etc.
+  const fields = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
+
+  for (const field of fields) {
+    const nameLower = (field.name || "").toLowerCase();
+
+    if (nameLower.includes("first")) {
+      await fillFirstNameField("David"); 
+    }
+    else if (nameLower.includes("last")) {
+      await fillLastNameField("Johnson");
+    }
+    else if (nameLower.includes("birth") || nameLower.includes("date")) {
+      await fillBirthdateField("1 April 1990");
+    }
+    else if (nameLower.includes("gender")) {
+      fillGenderField("Male");
+    }
+    else {
+      // Par défaut => fullName
+      await fillFullNameField("Johnson David");
+    }
+  }
+}
