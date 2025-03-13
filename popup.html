@@ -3,37 +3,51 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Linking our CSS -->
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
-    <div>
-        <label for="firstName">Prénom :</label>
-        <input type="text" id="firstName" readonly>
-        <button id="copyFirstName">Copier</button>
-        <button id="generateFirstName">Générer</button>
+    <div class="container">
+
+        <!-- First Name field -->
+        <div class="field">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" readonly>
+            <button id="copyFirstName">Copy</button>
+            <button id="generateFirstName">Generate</button>
+        </div>
+
+        <!-- Last Name field -->
+        <div class="field">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" readonly>
+            <button id="copyLastName">Copy</button>
+            <button id="generateLastName">Generate</button>
+        </div>
+
+        <!-- Date of Birth field -->
+        <div class="field">
+            <label for="birthdate">Date of Birth:</label>
+            <input type="text" id="birthdate" readonly>
+            <button id="copyBirthdate">Copy</button>
+            <button id="generateBirthdate">Generate</button>
+        </div>
+
+        <!-- Gender field -->
+        <div class="field">
+            <label for="genre">Gender:</label>
+            <input type="text" id="genre" readonly>
+            <button id="copyGenre">Copy</button>
+            <button id="generateGenre">Generate</button>
+        </div>
+
+        <!-- Main button to fill the form -->
+        <button id="fillForm">Fill the Form</button>
+
     </div>
-    <div>
-        <label for="lastName">Nom :</label>
-        <input type="text" id="lastName" readonly>
-        <button id="copyLastName">Copier</button>
-        <button id="generateLastName">Générer</button>
-    </div>
-    <div>
-        <label for="birthdate">Date de Naissance :</label>
-        <input type="text" id="birthdate" readonly>
-        <button id="copyBirthdate">Copier</button>
-        <button id="generateBirthdate">Générer</button>
-    </div>
-    <div>
-        <label for="genre">Genre :</label>
-        <input type="text" id="genre" readonly>
-        <button id="copyGenre">Copier</button>
-        <button id="generateGenre">Générer</button>
-    </div>
-    <div>
-        <button id="fillForm">Remplir le Formulaire</button>
-    </div>
+
+    <!-- JS files -->
     <script src="popup.js"></script>
     <script src="content.js"></script>
 </body>

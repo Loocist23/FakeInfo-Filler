@@ -1,23 +1,72 @@
+/* Global body */
 body {
   font-family: Arial, sans-serif;
-  padding: 10px;
+  background: #f3f3f3;
+  /* light gray */
+  margin: 0;
+  padding: 20px;
 }
 
-div {
-  margin-bottom: 10px;
+/* Main container */
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
-label {
+/* Each field */
+.field {
+  margin-bottom: 15px;
+}
+
+/* Labels */
+.field label {
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
-input[type="text"] {
+/* Text inputs */
+.field input[type="text"] {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-button {
+/* Small buttons */
+.field button {
   margin-top: 5px;
+  margin-right: 5px;
+  background-color: #0084ff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.field button:hover {
+  background-color: #005fb8;
+}
+
+/* Main "Fill the Form" button */
+#fillForm {
+  margin-top: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#fillForm:hover {
+  background-color: #218838;
 }

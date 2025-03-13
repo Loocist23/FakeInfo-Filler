@@ -1,13 +1,13 @@
-// Lors de l'installation ou la mise à jour de l'extension
+// When the extension is installed or updated
 chrome.runtime.onInstalled.addListener(() => {
-  // Crée le menu "Fill This Input" (seulement sur un champ éditable)
+  // Create the "Fill This Input" menu item (only on editable fields)
   chrome.contextMenus.create({
     id: "fillThisInput",
     title: "Fill This Input",
-    contexts: ["editable"] // seulement si clic droit sur <input>, <textarea>, contenteditable...
+    contexts: ["editable"] // Only if right-click on <input>, <textarea>, contenteditable...
   });
 
-  // Crée le menu "Fill All Inputs"
+  // Create the "Fill All Inputs" menu item
   chrome.contextMenus.create({
     id: "fillAllInputs",
     title: "Fill All Inputs",
@@ -15,7 +15,7 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-// Quand on clique sur un item de menu
+// When a menu item is clicked
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "fillThisInput") {
     chrome.tabs.sendMessage(tab.id, { action: "fillOneInput" });
