@@ -1,8 +1,8 @@
 /* Global body */
 body {
-  font-family: Arial, sans-serif;
-  background: #f3f3f3;
-  /* light gray */
+  font-family: "Roboto", sans-serif;
+  background: #1e2030;
+  color: whitesmoke;
   margin: 0;
   padding: 20px;
 }
@@ -10,11 +10,10 @@ body {
 /* Main container */
 .container {
   max-width: 400px;
-  margin: 0 auto;
-  background: #fff;
+  margin: auto;
+  background: #1e2030;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Each field */
@@ -33,17 +32,18 @@ body {
 .field input[type="text"] {
   width: 100%;
   padding: 10px;
+  background-color: #a5adcb;
   box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid #7f849c;
+  border-radius: 8px;
 }
 
 /* Small buttons */
 .field button {
   margin-top: 5px;
   margin-right: 5px;
-  background-color: #0084ff;
-  color: #fff;
+  background-color: #363a4f;
+  color: whitesmoke;
   border: none;
   padding: 8px 12px;
   border-radius: 4px;
@@ -52,15 +52,16 @@ body {
 }
 
 .field button:hover {
-  background-color: #005fb8;
+  background-color: #8aadf4;
+  color: #24273a;
 }
 
 /* Main "Fill the Form" button */
 #fillForm {
   margin-top: 10px;
-  background-color: #28a745;
-  color: #fff;
-  border: none;
+  background-color: #a6da95;
+  color: #1e2030;
+  border: 1px;
   padding: 10px 16px;
   border-radius: 4px;
   cursor: pointer;
@@ -68,5 +69,6 @@ body {
 }
 
 #fillForm:hover {
-  background-color: #218838;
+  background-color: #363a4f;
+  color: #a6da95;
 }
