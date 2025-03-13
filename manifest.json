@@ -1,31 +1,36 @@
 {
-    "manifest_version": 2,
-    "name": "Générateur d'Infos Fictives",
-    "version": "1.0",
-    "description": "Génère des informations fictives pour remplir les formulaires.",
-    "permissions": [
-      "clipboardWrite",
-      "activeTab",
-      "contextMenus"
-    ],
-    "browser_action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "48": "icons/icon-48.ico"
-      }
-    },
-    "icons": {
+  "manifest_version": 2,
+  "name": "FakeInfo-Filler",
+  "version": "1.0",
+  "description": "Generates fake information to fill out web forms for testing purposes.",
+  "permissions": [
+    "clipboardWrite",
+    "activeTab",
+    "contextMenus"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
       "48": "icons/icon-48.ico"
-    },
-    "background": {
-      "scripts": ["background.js"],
-      "persistent": false
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"]
-      }
-    ]
-  }
-  
+    }
+  },
+  "icons": {
+    "48": "icons/icon-48.ico"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+}

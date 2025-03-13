@@ -203,8 +203,8 @@ async function fillBirthdateField(birthdate) {
     // Autres : Google, Microsoft, Twitter, ou un <input type=date> ?
 
     // <input type="date"> ?
-    let dateInput = document.querySelector('input[type="date"]') 
-                 || document.querySelector('#birthdate');
+    let dateInput = document.querySelector('input[type="date"]')
+        || document.querySelector('#birthdate');
     if (dateInput && dateInput.type === "date") {
         const dateValue = toDateInputValue(rawDay, numericMonth, rawYear);
         dateInput.value = dateValue;
@@ -213,10 +213,10 @@ async function fillBirthdateField(birthdate) {
 
     // Sinon on cherche #month, #day, #year, ou #BirthDay, #BirthMonth, etc.
     // Mois
-    let monthSelect = document.querySelector("#SELECTOR_1") 
-                   || document.querySelector("#month") 
-                   || document.querySelector("#BirthMonth")
-                   || document.querySelector('select[name*="month" i], select[name="BirthMonth"]');
+    let monthSelect = document.querySelector("#SELECTOR_1")
+        || document.querySelector("#month")
+        || document.querySelector("#BirthMonth")
+        || document.querySelector('select[name*="month" i], select[name="BirthMonth"]');
 
     if (monthSelect && monthSelect.tagName.toLowerCase() === "select") {
         monthSelect.value = numericMonth;
@@ -228,10 +228,10 @@ async function fillBirthdateField(birthdate) {
     }
 
     // Jour
-    let daySelect = document.querySelector("#SELECTOR_2") 
-                 || document.querySelector("#day") 
-                 || document.querySelector("#BirthDay") 
-                 || document.querySelector('select[name*="day" i], select[name="BirthDay"]');
+    let daySelect = document.querySelector("#SELECTOR_2")
+        || document.querySelector("#day")
+        || document.querySelector("#BirthDay")
+        || document.querySelector('select[name*="day" i], select[name="BirthDay"]');
 
     if (daySelect && daySelect.tagName.toLowerCase() === "select") {
         daySelect.value = rawDay;
@@ -245,10 +245,10 @@ async function fillBirthdateField(birthdate) {
     }
 
     // Année
-    let yearSelect = document.querySelector("#SELECTOR_3") 
-                  || document.querySelector("#year") 
-                  || document.querySelector("#BirthYear") 
-                  || document.querySelector('select[name*="year" i], select[name="BirthYear"]');
+    let yearSelect = document.querySelector("#SELECTOR_3")
+        || document.querySelector("#year")
+        || document.querySelector("#BirthYear")
+        || document.querySelector('select[name*="year" i], select[name="BirthYear"]');
 
     if (yearSelect && yearSelect.tagName.toLowerCase() === "select") {
         yearSelect.value = rawYear;
@@ -332,28 +332,28 @@ async function fillFormWithData(data) {
 let lastRightClickedElement = null;
 
 document.addEventListener("contextmenu", (e) => {
-  if (
-    e.target instanceof HTMLInputElement ||
-    e.target instanceof HTMLTextAreaElement ||
-    e.target.isContentEditable
-  ) {
-    lastRightClickedElement = e.target;
-  } else {
-    lastRightClickedElement = null;
-  }
+    if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement ||
+        e.target.isContentEditable
+    ) {
+        lastRightClickedElement = e.target;
+    } else {
+        lastRightClickedElement = null;
+    }
 });
 
 /**
  * On écoute les messages "fillOneInput" / "fillAllInputs" depuis background.js
  */
 browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (msg.action === "fillOneInput") {
-    if (lastRightClickedElement) {
-      fillOneFieldIntelligent(lastRightClickedElement);
+    if (msg.action === "fillOneInput") {
+        if (lastRightClickedElement) {
+            fillOneFieldIntelligent(lastRightClickedElement);
+        }
+    } else if (msg.action === "fillAllInputs") {
+        fillAllFieldsIntelligent();
     }
-  } else if (msg.action === "fillAllInputs") {
-    fillAllFieldsIntelligent();
-  }
 });
 
 /**
@@ -362,29 +362,29 @@ browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
  * - Appelle la sous-fonction appropriée (fillFirstNameField, fillBirthdateField, etc.)
  */
 async function fillOneFieldIntelligent(elem) {
-  // On récupère le 'name' (en minuscules) pour deviner le type de champ
-  const fieldName = (elem.name || "").toLowerCase();
+    // On récupère le 'name' (en minuscules) pour deviner le type de champ
+    const fieldName = (elem.name || "").toLowerCase();
 
-  if (fieldName.includes("first")) {
-    // Prénom
-    await fillFirstNameField("Alice"); 
-  } 
-  else if (fieldName.includes("last")) {
-    // Nom
-    await fillLastNameField("Smith");
-  }
-  else if (fieldName.includes("birth") || fieldName.includes("date")) {
-    // Date de naissance
-    await fillBirthdateField("12 March 1987");
-  }
-  else if (fieldName.includes("gender")) {
-    // Genre
-    fillGenderField("Female");
-  }
-  else {
-    // Sinon, on considère que c'est un champ "full name"
-    await fillFullNameField("Smith Alice");
-  }
+    if (fieldName.includes("first")) {
+        // Prénom
+        await fillFirstNameField("Alice");
+    }
+    else if (fieldName.includes("last")) {
+        // Nom
+        await fillLastNameField("Smith");
+    }
+    else if (fieldName.includes("birth") || fieldName.includes("date")) {
+        // Date de naissance
+        await fillBirthdateField("12 March 1987");
+    }
+    else if (fieldName.includes("gender")) {
+        // Genre
+        fillGenderField("Female");
+    }
+    else {
+        // Sinon, on considère que c'est un champ "full name"
+        await fillFullNameField("Smith Alice");
+    }
 }
 
 /**
@@ -393,27 +393,27 @@ async function fillOneFieldIntelligent(elem) {
  *   appelle la sous-fonction appropriée ou y met des valeurs standard.
  */
 async function fillAllFieldsIntelligent() {
-  // On récupère tous les champs de type text, email, etc.
-  const fields = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
+    // On récupère tous les champs de type text, email, etc.
+    const fields = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
 
-  for (const field of fields) {
-    const nameLower = (field.name || "").toLowerCase();
+    for (const field of fields) {
+        const nameLower = (field.name || "").toLowerCase();
 
-    if (nameLower.includes("first")) {
-      await fillFirstNameField("David"); 
+        if (nameLower.includes("first")) {
+            await fillFirstNameField("David");
+        }
+        else if (nameLower.includes("last")) {
+            await fillLastNameField("Johnson");
+        }
+        else if (nameLower.includes("birth") || nameLower.includes("date")) {
+            await fillBirthdateField("1 April 1990");
+        }
+        else if (nameLower.includes("gender")) {
+            fillGenderField("Male");
+        }
+        else {
+            // Par défaut => fullName
+            await fillFullNameField("Johnson David");
+        }
     }
-    else if (nameLower.includes("last")) {
-      await fillLastNameField("Johnson");
-    }
-    else if (nameLower.includes("birth") || nameLower.includes("date")) {
-      await fillBirthdateField("1 April 1990");
-    }
-    else if (nameLower.includes("gender")) {
-      fillGenderField("Male");
-    }
-    else {
-      // Par défaut => fullName
-      await fillFullNameField("Johnson David");
-    }
-  }
 }
