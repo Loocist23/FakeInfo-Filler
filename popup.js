@@ -12,10 +12,10 @@ function generateLastName() {
   return lastNames[Math.floor(Math.random() * lastNames.length)];
 }
 
-// Generate a random birthdate (18 to 100 years old)
+// Generate a random birthdate (21 to 100 years old)
 function generateBirthdate() {
   const today = new Date();
-  const minAge = 18;
+  const minAge = 21;
   const maxAge = 100;
   const age = Math.floor(Math.random() * (maxAge - minAge + 1)) + minAge;
 
