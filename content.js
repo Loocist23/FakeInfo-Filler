@@ -94,12 +94,21 @@ function toDateInputValue(day, month, year) {
 async function fillFirstNameField(firstName) {
   const selector = `
     input[name*="firstname" i],
+    input[id*="firstname" i],
     input[name*="first_name" i],
+    input[id*="first_name" i],
     input[name*="given" i],
+    input[id*="given" i],
     input[placeholder*="prenom" i],
     input[placeholder*="first name" i],
     input[placeholder*="given name" i],
-    input[name*="firstnameinput" i]
+    input[name*="firstnameinput" i],
+    input[class*="firstname" i],
+    input[class*="first_name" i],
+    input[class*="given" i],
+    input[aria-label*="prenom" i],
+    input[aria-label*="first name" i],
+    input[aria-label*="given name" i]
   `.replace(/\s+/g, ' ');
 
   const field = document.querySelector(selector);
@@ -107,6 +116,7 @@ async function fillFirstNameField(firstName) {
     await simulateUserTyping(field, firstName, 50);
   }
 }
+
 
 async function fillLastNameField(lastName) {
   const selector = `
@@ -118,7 +128,19 @@ async function fillLastNameField(lastName) {
     input[placeholder*="family name" i],
     input[placeholder*="surname" i],
     input[placeholder*="nom de famille" i],
-    input[name*="lasttnameinput" i]
+    input[name*="lasttnameinput" i],
+    input[id*="lastname" i],
+    input[id*="last_name" i],
+    input[id*="family" i],
+    input[id*="surname" i],
+    input[class*="lastname" i],
+    input[class*="last_name" i],
+    input[class*="family" i],
+    input[class*="surname" i],
+    input[aria-label*="last name" i],
+    input[aria-label*="family name" i],
+    input[aria-label*="surname" i],
+    input[aria-label*="nom de famille" i]
   `.replace(/\s+/g, ' ');
 
   const field = document.querySelector(selector);
@@ -139,7 +161,22 @@ async function fillFullNameField(fullName) {
     input[placeholder*="fullname" i],
     input[placeholder*="complete name" i],
     input[placeholder*="your name" i],
-    input[placeholder*="nom complet" i]
+    input[placeholder*="nom complet" i],
+    input[id*="fullname" i],
+    input[id*="full_name" i],
+    input[id*="complete" i],
+    input[id*="your_name" i],
+    input[id*="votre_nom" i],
+    input[class*="fullname" i],
+    input[class*="full_name" i],
+    input[class*="complete" i],
+    input[class*="your_name" i],
+    input[class*="votre_nom" i],
+    input[aria-label*="full name" i],
+    input[aria-label*="fullname" i],
+    input[aria-label*="complete name" i],
+    input[aria-label*="your name" i],
+    input[aria-label*="nom complet" i]
   `.replace(/\s+/g, ' ');
 
   const field = document.querySelector(selector);
