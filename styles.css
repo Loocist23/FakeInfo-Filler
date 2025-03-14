@@ -55,7 +55,7 @@ body {
   border-radius: 6px;
   cursor: pointer;
   padding: 6px 10px;
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 
 /* 'Copy' is placed slightly more to the left than 'Generate' */
