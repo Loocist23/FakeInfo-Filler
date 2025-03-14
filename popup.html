@@ -33,6 +33,11 @@
             </symbol>
         </svg>
 
+        <!-- Fill button -->
+        <button id="fillForm" class="fill-btn">Fill</button>
+
+        <hr>
+
         <!-- First name -->
         <div class="field">
             <label for="firstName">First name:</label>
@@ -91,9 +96,44 @@
             </div>
         </div>
 
-        <!-- Fill button -->
-        <button id="fillForm" class="fill-btn">Fill</button>
+        <div class="field">
+            <label for="country">Country:</label>
+            <div class="input-group">
+                <input type="text" id="country" readonly>
+                <button id="copyCountry" class="icon-btn copy-btn">Copy</button>
+                <button id="generateCountry" class="icon-btn generate-btn">
+                    <svg width="18" height="18" fill="currentColor">
+                        <use xlink:href="#refresh-icon"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
 
+        <div class="field">
+            <label for="city">City:</label>
+            <div class="input-group">
+                <input type="text" id="ctiy" readonly>
+                <button id="copyCity" class="icon-btn copy-btn">Copy</button>
+                <button id="generateCity" class="icon-btn generate-btn">
+                    <svg width="18" height="18" fill="currentColor">
+                        <use xlink:href="#refresh-icon"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="street">Street address:</label>
+            <div class="input-group">
+                <input type="text" id="street" readonly>
+                <button id="copyStreet" class="icon-btn copy-btn">Copy</button>
+                <button id="generateStreet" class="icon-btn generate-btn">
+                    <svg width="18" height="18" fill="currentColor">
+                        <use xlink:href="#refresh-icon"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
 
     <script src="popup.js"></script>

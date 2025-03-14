@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "FakeInfo-Filler",
-  "version": "1.0",
+  "version": "1.2",
   "description": "Generates fake information to fill out web forms for testing purposes.",
   "permissions": [
     "clipboardWrite",
@@ -11,11 +11,11 @@
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "48": "icons/icon-48.ico"
+      "48": "icons/icon-48.png"
     }
   },
   "icons": {
-    "48": "icons/icon-48.ico"
+    "48": "icons/icon-48.png"
   },
   "background": {
     "scripts": [
